@@ -1,0 +1,27 @@
+﻿<Window x:Class="My_Pos.Views.SizeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Size" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Choose Size:" FontSize="16" FontWeight="Bold" Margin="0 0 0 10"/>
+            <ItemsControl ItemsSource="{Binding Sizes}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding NAME}"
+                                Width="80" Margin="5"
+                                Command="{Binding DataContext.SelectSizeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</Window>
