@@ -22,7 +22,6 @@ namespace My_Pos.Views
                 // If the clicked product is a pizza (e.g., ReportCatId == 2)
                 if (product.ReportCatId == 2)
                 {
-                    // Use DI to create and show the SizeView
                     var sizeWindow = App.ServiceProvider?.GetRequiredService<SizeView>();
                     sizeWindow?.ShowDialog();
                     return;
@@ -35,6 +34,17 @@ namespace My_Pos.Views
                     viewModel.AddToCartCommand.Execute(product);
                 }
             }
+        }
+
+        public Point GetCenterOfProductColumn()
+        {
+            if (ProductColumnPanel == null)
+                return new Point(SystemParameters.PrimaryScreenWidth / 2, SystemParameters.PrimaryScreenHeight / 2);
+
+            var relativePoint = ProductColumnPanel.TransformToAncestor(this)
+                .Transform(new Point(ProductColumnPanel.ActualWidth / 2, ProductColumnPanel.ActualHeight / 2));
+
+            return PointToScreen(relativePoint);
         }
     }
 }

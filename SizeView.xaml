@@ -16,7 +16,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding NAME}"
-                                Width="80" Margin="5"
+                                Width="80" Height="40" Margin="5"
                                 Command="{Binding DataContext.SelectSizeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                 CommandParameter="{Binding}" />
                     </DataTemplate>
